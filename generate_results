@@ -1,0 +1,10 @@
+mkdir results
+mkdir results/data_calibrated
+nohup python paper_experiments/paper_experiments_offline.py -dset ubi -data data -data_out results/data_calibrated > results/results_ubi.txt &
+nohup python paper_experiments/paper_experiments_offline.py -dset kth -data data -data_out results/data_calibrated > results/results_kth.txt &
+nohup python paper_experiments/paper_experiments_offline.py -dset manigaze_mt -data_out results/data_calibrated -data data > results/results_manigaze_mt.txt &
+nohup python paper_experiments/paper_experiments_offline.py -dset manigaze_et -data_out results/data_calibrated -data data > results/results_manigaze_et.txt &
+
+nohup python paper_experiments/paper_experiments_online.py -dset ubi -data data > results/results_ubi_online.txt &
+nohup python paper_experiments/paper_experiments_online.py -dset kth -data data > results/results_kth_online.txt &
+

@@ -1,0 +1,14 @@
+{
+    "calib_prior": "oracle",
+    "calib_n_samples": "all",
+    "calib_selection": "random",    
+
+    "w_interval": [-30, -18],
+    "thresh_physical_head": [30, 30, 30, 30],
+    "thresh_physical_gaze": [90, 90, 90, 90],
+
+    "calib_model": "constant",
+    "ransac_n_iter": 500,
+
+    "thresh_vfoa": 10
+}
