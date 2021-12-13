@@ -7,7 +7,7 @@ This repository is the implementation of the following paper:
     Journal: ACM Transactions on Multimedia Computing, Communications, and Applications
     Year: 2021
 
-Please cite the above work when using resources from this repo.
+Please cite the above work when using resources from this repo.  
 Contact: remy.siegfried@idiap.ch, odobez@idiap.ch
 
 
@@ -45,9 +45,9 @@ We use two different coordinate systems:
 ** y-axis: upward from the camera point of view
 ** z-axis: backward from the camera point of view
 
-Note that when the subject is in the center of the image and look toward the camera, both coordinate sytems are aligned (thus headpose is (0, 0, 0)).
-For computation sake, eye position, target position, and gaze direction are given in the HCS coordinate system.
-Note that it is possible to transform them into CCS using the head and headpose information.
+Note that when the subject is in the center of the image and look toward the camera, both coordinate sytems are aligned (thus headpose is (0, 0, 0)).  
+For computation sake, eye position, target position, and gaze direction are given in the HCS coordinate system.  
+Note that it is possible to transform them into CCS using the head and headpose information.  
 
 
 ## 1.2. Actions
@@ -59,24 +59,26 @@ Also, the location where the action takes place (i.e. position of the manipulate
 
 
 ## 1.3. Data structure and using other data
-The current software use a dictonary data structure, which is loaded by the "load_data()" function from "src/data_loaders.py".
-It has the following architecture (words in <brackets> design variable that will have another name in the implemented dict):
-data = {
-    'subject': {
-        'identifier': (N, 1) array, (str), name of the subject
-        'frameIndex': (N, 1) array, (int), video frame index
-        'eye': (N, 3) array, (float), 3D eye position
-        'gaze': (N, 3) array, (float), 3D gaze vector
-        'head': (N, 3) array, (float), 3D head position
-        'headpose': (N, 3) array, (float), 3D head pose (i.e. roll, pitch, yaw)
-        'speaking': (N, 1) array, (int), speaking status (0: not speaking, 1; speaking)
-        'action': (N, 1) array, (str), action and location with format '<action>:<location>'
-        'vfoa_gt': (N, 1) array, (str), name of the VFOA target
-    },
-    'targets': {
-    	'<target_name>': (N, 4) array, (float), 3D target position, followed by speaking status (0 or 1)
+The current software use a dictonary data structure, which is loaded by the "load_data()" function from "src/data_loaders.py".  
+It has the following architecture (words in <brackets> design variable that will have another name in the implemented dict):  
+    
+    data = {
+        'subject': {
+            'identifier': (N, 1) array, (str), name of the subject
+            'frameIndex': (N, 1) array, (int), video frame index
+            'eye': (N, 3) array, (float), 3D eye position
+            'gaze': (N, 3) array, (float), 3D gaze vector
+            'head': (N, 3) array, (float), 3D head position
+            'headpose': (N, 3) array, (float), 3D head pose (i.e. roll, pitch, yaw)
+            'speaking': (N, 1) array, (int), speaking status (0: not speaking, 1; speaking)
+            'action': (N, 1) array, (str), action and location with format '<action>:<location>'
+            'vfoa_gt': (N, 1) array, (str), name of the VFOA target
+        },
+        'targets': {
+            '<target_name>': (N, 4) array, (float), 3D target position, followed by speaking status (0 or 1)
+        }
     }
-}
+
 Note that data['targets'] can have any number of target in it.
 
 To use other data or in case of missing data, several fields (namely identifier, frameIndex, and head)
@@ -86,9 +88,9 @@ can be filled with nan values without impact.
 
 # 2. Scripts
 
-The "src" folder contains the main scripts to perform calibration.
-The "offline_calibration.py" and "online_calibration.py" script allows to perform calibration end to end, taking pieces of code from "src" folder together.
-The "paper_experiments" folder contains scripts to perform the same experiments as in the related paper.
+The "src" folder contains the main scripts to perform calibration.  
+The "offline_calibration.py" and "online_calibration.py" script allows to perform calibration end to end, taking pieces of code from "src" folder together.  
+The "paper_experiments" folder contains scripts to perform the same experiments as in the related paper.  
 
 
 ## 2.1. Package requirements
@@ -102,7 +104,7 @@ Required packages are listed in requirements.txt.
 Let's say that data txt files are in "dataset/data",
 a quick example can be launched using:
 
->>>python offline_calibration.py -calib dataset/data/data_UBImpressed_025BM_Interviewer.txt -eval dataset/data/data_UBImpressed_025BM_Interviewer.txt -config config/speaking_constant.json -out results_offline_ubimpressed.txt -v
+> python offline_calibration.py -calib dataset/data/data_UBImpressed_025BM_Interviewer.txt -eval dataset/data/data_UBImpressed_025BM_Interviewer.txt -config config/speaking_constant.json -out results_offline_ubimpressed.txt -v
 
 # License
 
